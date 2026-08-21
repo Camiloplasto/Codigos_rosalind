@@ -187,3 +187,50 @@ with open (ruta_salida, "w") as archivo_salida:
 #print(f"Total de nucleótidos en la secuencia de ADN: {len(adn_principal)}")
 #print(f"Secuencia de proteína traducida: {proteina}")
 #print(f"Total de aminoácidos en la proteína traducida: {len(proteina)}")
+
+# %%
+#Fiding a Spliced Motif (encontrando un motivo empalmado)
+
+archivo_entrada = "C:/Users/Camilo A. Marin Cast/Downloads/Codigos_rosalind/spliced_motif/rosalind_sseq.txt"
+archivo_salida = "C:/Users/Camilo A. Marin Cast/Downloads/Codigos_rosalind/spliced_motif/rosalind_sseq_result.txt"
+
+secuencias = []
+secuencias_conjunto = ""
+
+with open(archivo_entrada, "r") as archivo:
+    for linea in archivo:
+        linea = linea.strip()
+
+        if linea.startswith(">"):
+            if secuencias_conjunto:
+                secuencias.append(secuencias_conjunto)
+                secuencias_conjunto = ""
+
+        else:
+            secuencias_conjunto += linea
+
+    if secuencias_conjunto:
+        secuencias.append(secuencias_conjunto)
+
+#se definen las variables para la secuencia principal y las subsecuencias
+secuencia_principal = secuencias[0]
+subsecuencias = secuencias[1]
+
+indices = []
+posicion_s = 0
+
+for base in subsecuencias:
+    posicion = secuencia_principal.find(base, posicion_s)
+    indices.append(str(posicion + 1))
+    #Se guarda como un string para que sea más facil unirlo después con espacios
+    posicion_s = posicion + 1
+
+resultado = " ".join(indices)
+
+with open(archivo_salida, "w") as archivo:
+    archivo.write(resultado)
+
+print(f"Secuencia principal: {secuencia_principal}")
+print(f"Subsecuencia: {subsecuencias}")
+print(f"Índices: {resultado}")
+
