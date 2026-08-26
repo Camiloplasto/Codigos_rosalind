@@ -1,38 +1,7 @@
 # %%
-#Counting Point Mutations (Contando Mutaciones Puntuales)
-
-archivo_entrada = "C:/Users/Camilo A. Marin Cast/Downloads/Codigos_rosalind/counting_point_mutations/rosalind_hamm.txt"
-archivo_salida = "C:/Users/Camilo A. Marin Cast/Downloads/Codigos_rosalind/counting_point_mutations/rosalind_hamm_result.txt"
-
-with open (archivo_entrada, "r") as archivo:
-    secuencia = archivo.read().splitlines()
-
-adn_principal = secuencia[0]
-adn_mutaciones = secuencia[1]
-
-distancia = 0
-len_adn_principal = len(adn_principal)
-len_adn_mutaciones = len(adn_mutaciones)
-
-for i in range(len(adn_principal)):
-    if adn_principal[i] != adn_mutaciones[i]:
-        distancia += 1
-
-with open (archivo_salida, "w") as archivo_salida:
-    archivo_salida.write(str(distancia))
-
-print(f"ADN principal: {len_adn_principal}")
-print(f"ADN mutaciones: {len_adn_mutaciones}")
-print(f"Número de mutaciones: {distancia}")
-
-#Se hace un codigo que toma el archivo dado por Rosalind, se pasa con .splitlines para que se creen las dos filas
-#luego se defienen las dos filas con una variable las cuales luego se comparan en un ciclo por el cual anota cada una
-#de las diferencias en la variable distanciapara luego escribirla en un .txt que es importado a Rosalind
-
-# %%
 #searching through the haystack
-ruta_entrada = "C:/Users/Camilo A. Marin Cast/Downloads/Codigos_rosalind/searching_through_the_haystack/rosalind_hamm.txt"
-ruta_salida = "C:/Users/Camilo A. Marin Cast/Downloads/Codigos_rosalind/searching_through_the_haystack/rosalind_hamm_result.txt"
+ruta_entrada = "C:/Users/Camilo A. Marin Cast/Downloads/Codigos_rosalind/searching_through_haystack/rosalind_hamm.txt"
+ruta_salida = "C:/Users/Camilo A. Marin Cast/Downloads/Codigos_rosalind/searching_through_haystack/rosalind_hamm_result.txt"
 
 secuencias = []
 secuencia_filtrada = ""
